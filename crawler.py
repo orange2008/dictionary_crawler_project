@@ -32,15 +32,15 @@ try:
     for loc in urllist:
         uri = loc.get_text()
         print("Downloading " + uri + "...")
-        os.system("curl -O -L " + uri)
+        os.system("cd sm && curl -O -L " + uri)
 except:
     print("Skipped download.")
 # Extract sitemap
 smn = os.listdir(os.getcwd())
 try:   
-    os.chdir("/home/runner/dictionary_crawler_project/sm")
-    obj = open("/home/runner/dictionary_crawler_project/dict/" + str(t) + "-dictionary.json", 'w')
+    obj = open("dict/" + str(t) + "-dictionary.json", 'w')
     for gz in smn:
+        gz = "sm/" + gz
         print("Extracting " + gz + "...")
         os.system("gzip -d " + gz)
         # Crawling
