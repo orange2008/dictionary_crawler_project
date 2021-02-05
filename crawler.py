@@ -47,10 +47,13 @@ try:
         xml = gz.replace(".gz", "")
         if "-additional" in xml:
             print("Skipped " + xml)
+            continue
         elif "-supplemental" in xml:
             print("Skipped " + xml)
+            continue
         elif "-list" in xml:
             print("Skipped " + xml)
+            continue
         else:
             print("Trying to crawl " + xml)
         x = open(xml).read()
