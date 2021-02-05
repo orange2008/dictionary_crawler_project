@@ -16,7 +16,6 @@ def full():
     string = str(y)+da+str(m)+da+str(d)+da+str(h)+da+str(mi)+da+str(s)
     return string
 # Format JSON
-os.chdir("sm")
 t = str(full())
 oi = {'dictionary': {}}
 # Get sitemap
@@ -38,8 +37,9 @@ except:
     print("Skipped download.")
 # Extract sitemap
 smn = os.listdir(os.getcwd())
-try:
-    obj = open("../dict/" + str(t) + "-dictionary.json", 'w')
+try:   
+    os.chdir("/home/runner/dictionary_crawler_project/sm")
+    obj = open("/home/runner/dictionary_crawler_project/dict/" + str(t) + "-dictionary.json", 'w')
     for gz in smn:
         print("Extracting " + gz + "...")
         os.system("gzip -d " + gz)
