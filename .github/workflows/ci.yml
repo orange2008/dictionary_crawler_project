@@ -20,7 +20,7 @@ jobs:
               python3 crawler.py
         - name: Clean
           run: |
-              rm -rf sitemap*
+              rm -rf sm/sitemap*
         - name: Post to github
           run: |
               git config --global user.name "Github Action"

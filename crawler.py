@@ -36,7 +36,7 @@ try:
 except:
     print("Skipped download.")
 # Extract sitemap
-smn = os.listdir(os.getcwd())
+smn = os.listdir("sm")
 try:   
     obj = open("dict/" + str(t) + "-dictionary.json", 'w')
     for gz in smn:
