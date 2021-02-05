@@ -45,6 +45,7 @@ try:
         os.system("gzip -d " + gz)
         # Crawling
         xml = gz.replace(".gz", "")
+        print("XML: " + xml)
         if "-additional" in xml:
             print("Skipped " + xml)
             continue
@@ -54,8 +55,7 @@ try:
         elif "-list" in xml:
             print("Skipped " + xml)
             continue
-        else:
-            print("Trying to crawl " + xml)
+        print("Trying to crawl " + xml)
         x = open(xml).read()
         bsxml = BeautifulSoup(x, 'html.parser')
         link = bsxml.find_all("loc")
@@ -77,7 +77,8 @@ try:
             o = {"word": str(word), "part of speech": str(mag),"definition": str(defi)}
             oi['dictionary'][word] = o
             print("\n\n\n")
-except:
+except as e:
+    print(e)
     json.dump(oi, obj)
     obj.close()
     
