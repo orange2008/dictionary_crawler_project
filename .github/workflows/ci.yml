@@ -1,0 +1,30 @@
+name: Dictionary.com Crawl
+on:
+    push:
+    schedule:
+        - cron: '0 0/6 * * *'
+jobs:
+    crawl:
+        name: Dictionary.com Crawl
+        runs-on: ubuntu-latest
+        steps:
+        - name: checkout
+          uses: actions/checkout@master
+        - name: Install dependencies
+          run: |
+              sudo apt install python3 python3-dev python-pip curl
+              pip install beautifulsoup4
+        - name: Crawl
+          run: |
+              # Start Mission 
+              python3 crawler.py
+        - name: Clean
+          run: |
+              rm -rf sitemap*
+        - name: Post to github
+          run: |
+              git config --global user.name "Github Action"
+              git config --global user.email "action@github.com"
+              git add .
+              git commit -m "Action"
+              git push -u origin master
