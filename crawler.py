@@ -77,7 +77,7 @@ try:
             o = {"word": str(word), "part of speech": str(mag),"definition": str(defi)}
             oi['dictionary'][word] = o
             print("\n\n\n")
-except as e:
+except KeyboardInterrupt as e:
     print(e)
     json.dump(oi, obj)
     obj.close()
